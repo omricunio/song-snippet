@@ -1,5 +1,13 @@
 .root {
-    composes: white-card from global;
-    width: 100px;
-    height: 100px;
+    composes: bubble from global;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
 }

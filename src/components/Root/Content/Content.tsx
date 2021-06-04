@@ -7,7 +7,7 @@ class Content extends Component {
     render() {
         return (
             <div className={styles.root}>    
-                <SongCard/>      
+                <SongCard/>
             </div>
         );
     }
