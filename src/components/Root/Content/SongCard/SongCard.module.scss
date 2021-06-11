@@ -1,13 +1,17 @@
-.root {
-    composes: bubble from global;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.root  {
+    max-width: 300px;
+    border-radius: 3em;
+    overflow: hidden;
+}
+
+.cardItems {
     padding: 20px;
 }
 
-.image {
-    width: 250px;
-    height: 250px;
+.cardItems > * {
+    margin-bottom: 10px;
+}
+
+.cardItems > :last-child {
+    margin-bottom: 0px;
 }
