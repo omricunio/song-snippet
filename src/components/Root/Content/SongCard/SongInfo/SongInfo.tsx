@@ -2,11 +2,16 @@ import React, { FunctionComponent } from "react";
 
 import styles from "./SongInfo.module.scss";
 
-const SongInfo: FunctionComponent = () => {
+interface SongInfoProps {
+    song: string,
+    artist: string
+}
+
+const SongInfo: FunctionComponent<SongInfoProps> = (props) => {
     return (
         <div className={styles.root}>
-            <div className={styles.songName}>Kill em with kindness</div>
-            <div className={styles.artistName}>Selena Gomez</div>
+            <div className={styles.songName}>{props.song}</div>
+            <div className={styles.artistName}>{props.artist}</div>
         </div>
     );
 };
