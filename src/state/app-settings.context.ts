@@ -1,7 +1,8 @@
 import React from 'react'
 
 export interface AppSettings {
-    isLoading: boolean
+    isLoading: boolean,
+    isPlaying: boolean
 }
 
 interface AppSettingsContext {
@@ -10,7 +11,8 @@ interface AppSettingsContext {
 }
 
 export const defaultAppSettings: AppSettings = {
-    isLoading: false
+    isLoading: false,
+    isPlaying: false
 }
 
 const defaultAppSettingsContext: AppSettingsContext = {

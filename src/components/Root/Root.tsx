@@ -20,7 +20,7 @@ const Root: FunctionComponent = () => {
                     <Content />
                     <AudioPlayer
                         url={songContextValue.song.playableUrl}
-                        isPlaying={true}
+                        isPlaying={appSettingsContextValue.appSettings.isPlaying}
                     />
                 </div>
             </appSettingsContext.Provider>

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect, useRef } from "react";
 
 import styles from "./AudioPlayer.module.scss";
 
@@ -7,9 +7,21 @@ interface AudioPlayerProps {
     isPlaying: boolean
 }
 
-const AudioPlayer: FunctionComponent<AudioPlayerProps> = (props) => {
+const AudioPlayer: FunctionComponent<AudioPlayerProps> = ({ isPlaying, url }) => {
+    const player = useRef<HTMLAudioElement>(null);
+    useEffect(() => {
+        const currentPlayer = player.current;
+        if(currentPlayer) {
+            if(isPlaying) {
+                currentPlayer.paused && currentPlayer.play()
+            } else {
+                !currentPlayer.paused && currentPlayer.pause()
+            }            
+        }
+    }, [isPlaying])
+
     return (
-        <audio onCanPlay={(e)=>e.currentTarget.play()} autoPlay={true} src={props.url}></audio>
+        <audio ref={player} onCanPlay={(e)=>e.currentTarget.play()} autoPlay={true} src={url}></audio>
     );
 };
 
