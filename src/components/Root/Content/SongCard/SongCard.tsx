@@ -10,13 +10,14 @@ import SongInfo from "./SongInfo";
 interface SongCardProps {
     song: string,
     artist: string,
-    image: string
+    image: string,
+    isLoading: boolean
 }
 
 const SongCard: FunctionComponent<SongCardProps> = (props) => {
     return (
         <div className={styles.root}>
-            <Spin spinning={false} delay={500}>
+            <Spin spinning={props.isLoading} delay={500}>
                 <Bubble>
                     <div className={styles.cardItems}>
                         <SongInfo song={props.song} artist={props.artist}/>
