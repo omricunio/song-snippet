@@ -1,0 +1,18 @@
+.root  {
+    max-width: 300px;
+    border-radius: 3em;
+    overflow: hidden;
+    user-select: none;
+}
+
+.cardItems {
+    padding: 20px;
+}
+
+.cardItems > * {
+    margin-bottom: 10px;
+}
+
+.cardItems > :last-child {
+    margin-bottom: 0px;
+}

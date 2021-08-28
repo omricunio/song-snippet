@@ -1,0 +1,14 @@
+.root { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playPause {
+    border-radius: 50%;
+}
+
+.playPauseIcon {
+    color: white;
+    font-size: 2.5rem;
+    padding: 5px;
+}
