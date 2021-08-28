@@ -1,10 +1,15 @@
 import React from 'react'
 
-interface Song {
+export interface Song {
     name: string,
     artist: string,
     imageUrl: string,
     playableUrl: string
+}
+
+interface SongContext {
+    song: Song,
+    setCurrentSong: (song: Song) => void
 }
 
 export const defaultSong: Song = {
@@ -14,4 +19,9 @@ export const defaultSong: Song = {
     playableUrl: ""
 }
 
-export const SongContext = React.createContext<Song>(defaultSong)
+const defaultSongContext: SongContext = {
+    song: defaultSong,
+    setCurrentSong: () => {}
+}
+
+export const songContext = React.createContext<SongContext>(defaultSongContext)

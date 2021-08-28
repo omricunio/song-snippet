@@ -1,19 +1,27 @@
 import React, { FunctionComponent, useContext } from "react";
-import { SongContext } from "../../../context/song-context";
+import { appSettingsContext } from "../../../state/app-settings.context";
+import { songContext } from "../../../state/song.context";
 
 import styles from "./Content.module.scss";
 import SongCard from "./SongCard";
 
 const Content: FunctionComponent = () => {
-    const song = useContext(SongContext);
-    
+    const songCtx = useContext(songContext);
+    const appSettingsCtx = useContext(appSettingsContext);
+    const onPlayPause = () => {
+        appSettingsCtx.setCurrentAppSettings({ ...appSettingsCtx.appSettings, isPlaying: !appSettingsCtx.appSettings.isPlaying })
+    }
+
     return (
         <div className={styles.root}>
             <div className={styles.root}>
                 <SongCard
-                    song={song.name}
-                    artist={song.artist}
-                    image={song.imageUrl}
+                    isLoading={appSettingsCtx.appSettings.isLoading}
+                    isPlaying={appSettingsCtx.appSettings.isPlaying}
+                    song={songCtx.song.name}
+                    artist={songCtx.song.artist}
+                    image={songCtx.song.imageUrl}
+                    onPlayPause={onPlayPause}
                 />
             </div>
         </div>

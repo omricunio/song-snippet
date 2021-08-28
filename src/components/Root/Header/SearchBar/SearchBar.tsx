@@ -1,10 +1,21 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useState } from "react";
 
 import styles from "./SearchBar.module.scss";
 import { EnterOutlined, SearchOutlined } from "@ant-design/icons";
 import Bubble from "../../../Bubble";
+import { ENTER_KEY_NAME } from "../../../../config/default";
 
-const SearchBar: FunctionComponent = () => {
+interface SearchBarProps {
+    onSearch: (value: string) => void
+}
+
+const SearchBar: FunctionComponent<SearchBarProps> = (props) => {
+    const [searchValue, setSearchValue] = useState("");
+
+    const search = () => {
+        props.onSearch(searchValue);
+    }
+
     return (
         <div className={styles.root}>
             <Bubble isRounded={true}>
@@ -14,8 +25,16 @@ const SearchBar: FunctionComponent = () => {
                         className={styles.input}
                         spellCheck={false}
                         placeholder="Search"
+                        value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}
+                        onKeyDown={(e) =>
+                            e.key === ENTER_KEY_NAME && search()
+                        }                        
                     />
-                    <EnterOutlined />
+                    <EnterOutlined
+                        className={styles.enter}
+                        onClick={search}
+                    />
                 </div>
             </Bubble>
         </div>
